@@ -1,3 +1,24 @@
+// Exercise 5
+
+let favActorFirstName = "Robert";
+let favActorSecondName = "Downey Jr.";
+
+let fullName = favActorFirstName.concat(" ", favActorSecondName);
+
+let uppercase = fullName.toUpperCase();
+
+let message = `My favorite Actor is ${uppercase} & he is Ironman.`;
+
+message += " His best movie is Avenger Endgame.";
+
+console.table({
+	favActorFirstName,
+	favActorSecondName,
+	fullName,
+	uppercase,
+	message,
+});
+
 // Exercise 1
 /*
 let name = "Raja Mahanty";
@@ -9,9 +30,9 @@ console.table({ name, whatDoYouWannaBecomeInYourLife, gender, twitterHandle });
 
 // Exercise 2
 
+/*
 let firstFavNum = 56;
 let secondFavNum = 38;
-/*
 console.log(firstFavNum + secondFavNum);
 console.log(firstFavNum - secondFavNum);
 console.log(firstFavNum * secondFavNum);
@@ -32,7 +53,7 @@ console.log(favNumber + undefined);
 */
 
 // Exercise 4
-
+/*
 let firstFavNumber = 10;
 let secondFavNumber = 20;
 console.log(firstFavNum > secondFavNum);
@@ -43,3 +64,4 @@ console.log(firstFavNum === secondFavNum);
 console.log(firstFavNum == secondFavNum);
 console.log(firstFavNum !== secondFavNum);
 console.log(firstFavNum != secondFavNum);
+*/
