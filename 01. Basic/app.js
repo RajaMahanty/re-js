@@ -21,7 +21,7 @@ console.log(firstFavNum ** secondFavNum);
 */
 
 // Exercise 3
-
+/*
 let isJsProgrammingLanguage = true;
 let isJsHard = false;
 let favNumber = 13;
@@ -29,3 +29,17 @@ let favNumber = 13;
 console.log(isJsProgrammingLanguage);
 console.log(isJsHard);
 console.log(favNumber + undefined);
+*/
+
+// Exercise 4
+
+let firstFavNumber = 10;
+let secondFavNumber = 20;
+console.log(firstFavNum > secondFavNum);
+console.log(firstFavNum < secondFavNum);
+console.log(firstFavNum >= secondFavNum);
+console.log(firstFavNum <= secondFavNum);
+console.log(firstFavNum === secondFavNum);
+console.log(firstFavNum == secondFavNum);
+console.log(firstFavNum !== secondFavNum);
+console.log(firstFavNum != secondFavNum);
