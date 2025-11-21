@@ -11,10 +11,21 @@ console.table({ name, whatDoYouWannaBecomeInYourLife, gender, twitterHandle });
 
 let firstFavNum = 56;
 let secondFavNum = 38;
-
+/*
 console.log(firstFavNum + secondFavNum);
 console.log(firstFavNum - secondFavNum);
 console.log(firstFavNum * secondFavNum);
 console.log(firstFavNum / secondFavNum);
 console.log(firstFavNum % secondFavNum);
 console.log(firstFavNum ** secondFavNum);
+*/
+
+// Exercise 3
+
+let isJsProgrammingLanguage = true;
+let isJsHard = false;
+let favNumber = 13;
+
+console.log(isJsProgrammingLanguage);
+console.log(isJsHard);
+console.log(favNumber + undefined);
