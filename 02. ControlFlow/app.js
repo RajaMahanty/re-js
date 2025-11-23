@@ -1,5 +1,28 @@
-// Exercise 7
+// Exercise 8
 
+let i;
+for (i = 1; i <= 1000; i++) {
+	console.log("Raja: ", i);
+}
+
+while (i > 0) {
+	console.log("Reverse Raja: ", i);
+	i--;
+}
+
+do {
+	console.log("Again Raja: ", i);
+	i++;
+} while (i <= 1000);
+
+i = 10;
+while (i <= 100) {
+	console.log("Raja Mahanty");
+	i++;
+}
+
+// Exercise 7
+/*
 let fruit = "Banana";
 switch (fruit) {
 	case "Banana":
@@ -14,7 +37,7 @@ switch (fruit) {
 	default:
 		console.log("Yeah what's that?");
 }
-
+*/
 // Exercise 6
 /*
 let number = 8;
