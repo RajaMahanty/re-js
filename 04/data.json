@@ -1,0 +1,14 @@
+{
+	"name": "Raja",
+	"age": 22,
+	"email": "rajamahanty2@gmail.com",
+	"isGamer": true,
+	"hobbies": ["Reading", "Gaming", "Cooking"],
+	"address": {
+		"street": "123 Main St",
+		"city": "Balarampur",
+		"state": "WB",
+		"zip": "723143",
+		"country": "India"
+	}
+}
