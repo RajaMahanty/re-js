@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Generate random emojis from various categories with fun animations" />
 		<title>Random Emoji Generator</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
@@ -11,10 +13,12 @@
 			<h1>Emoji Generator</h1>
 
 			<div class="emoji-display">
-				<div id="emoji" role="img" aria-label="random emoji" tabindex="0">
+				<div id="emoji" role="img" aria-label="Joy Face">
 					😂
 				</div>
-				<p id="emoji-name" class="emoji-name"></p>
+				<p id="emoji-name" class="emoji-name" aria-live="polite">Joy Face</p>
+				<!-- Hidden live region for screen reader announcements -->
+				<div id="emoji-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 			</div>
 
 			<div class="button-group">
@@ -39,14 +43,14 @@
 			</div>
 
 			<div class="info">
-				<p>Emojis generated: <span id="count">0</span></p>
-				<p class="hint">
-					💡 Tip: Press SPACE or ENTER to generate, or click the emoji
+				<p>Emojis generated: <span id="count" aria-live="polite">0</span></p>
+				<p class="hint" role="note">
+					💡 Tip: Press SPACE or ENTER to generate
 				</p>
-				<p id="copy-feedback" class="copy-feedback"></p>
+				<p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
 			</div>
 		</div>
 
-		<script src="app.js"></script>
+		<script type="module" src="app.js"></script>
 	</body>
-</html>
+</ht>
