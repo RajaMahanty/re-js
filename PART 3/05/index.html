@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Siblings & DOM Navigation</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 20px;
+				background-color: #f5f5f5;
+			}
+			.container {
+				max-width: 800px;
+				margin: 0 auto;
+				background: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			}
+			ul {
+				list-style: none;
+				padding: 0;
+			}
+			li {
+				padding: 10px;
+				margin: 5px 0;
+				background-color: #e3f2fd;
+				border-left: 4px solid #2196f3;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+			li:hover {
+				background-color: #bbdefb;
+			}
+			li.selected {
+				background-color: #2196f3;
+				color: white;
+			}
+			.output {
+				margin-top: 20px;
+				padding: 15px;
+				background-color: #f9f9f9;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				font-family: monospace;
+				white-space: pre-wrap;
+				word-wrap: break-word;
+			}
+			h2 {
+				color: #333;
+				margin-top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>DOM Siblings & Navigation Demo</h1>
+
+			<h2>List Items (Click to select):</h2>
+			<ul id="myList">
+				<li>Item 1</li>
+				<li>Item 2</li>
+				<li id="targetItem">Item 3 (Target)</li>
+				<li>Item 4</li>
+				<li>Item 5</li>
+			</ul>
+
+			<div class="output" id="output">
+				<strong>Output will appear here...</strong>
+			</div>
+		</div>
+
+		<script>
+			const output = document.getElementById("output");
+			const targetItem = document.getElementById("targetItem");
+			const myList = document.getElementById("myList");
+
+			function displayOutput(title, content) {
+				output.innerHTML += `<strong>${title}:</strong>\n${content}\n\n`;
+			}
+
+			// Clear output on load
+			output.innerHTML = "";
+
+			// 1. nextElementSibling - gets the next sibling element
+			console.log("=== nextElementSibling ===");
+			const nextSibling = targetItem.nextElementSibling;
+			displayOutput(
+				"nextElementSibling",
+				nextSibling ? nextSibling.textContent : "null (no next sibling)",
+			);
+
+			// 2. previousElementSibling - gets the previous sibling element
+			console.log("=== previousElementSibling ===");
+			const prevSibling = targetItem.previousElementSibling;
+			displayOutput(
+				"previousElementSibling",
+				prevSibling ? prevSibling.textContent : "null (no previous sibling)",
+			);
+
+			// 3. parentElement - gets the parent element
+			console.log("=== parentElement ===");
+			const parent = targetItem.parentElement;
+			displayOutput("parentElement", parent ? parent.tagName : "null");
+
+			// 4. Get all siblings (including the element itself)
+			console.log("=== All Siblings (including self) ===");
+			const allSiblingsWithSelf = Array.from(parent.children);
+			displayOutput(
+				"All Siblings (with self)",
+				allSiblingsWithSelf.map((el) => el.textContent).join(", "),
+			);
+
+			// 5. Get all siblings (excluding the element itself)
+			console.log("=== All Siblings (excluding self) ===");
+			const allSiblings = Array.from(parent.children).filter(
+				(child) => child !== targetItem,
+			);
+			displayOutput(
+				"All Siblings (without self)",
+				allSiblings.map((el) => el.textContent).join(", "),
+			);
+
+			// 6. Get first child of parent
+			console.log("=== firstElementChild ===");
+			const firstChild = parent.firstElementChild;
+			displayOutput(
+				"firstElementChild of parent",
+				firstChild ? firstChild.textContent : "null",
+			);
+
+			// 7. Get last child of parent
+			console.log("=== lastElementChild ===");
+			const lastChild = parent.lastElementChild;
+			displayOutput(
+				"lastElementChild of parent",
+				lastChild ? lastChild.textContent : "null",
+			);
+
+			// 8. Get all children of parent
+			console.log("=== All children ===");
+			const allChildren = Array.from(parent.children);
+			displayOutput(
+				"All children of parent",
+				allChildren.map((el) => el.textContent).join(", "),
+			);
+
+			// 9. Get element's next siblings only (not including self)
+			console.log("=== Next Siblings Only ===");
+			let nextSiblings = [];
+			let current = targetItem.nextElementSibling;
+			while (current) {
+				nextSiblings.push(current.textContent);
+				current = current.nextElementSibling;
+			}
+			displayOutput(
+				"All next siblings",
+				nextSiblings.length > 0 ? nextSiblings.join(", ") : "none",
+			);
+
+			// 10. Get element's previous siblings only (not including self)
+			console.log("=== Previous Siblings Only ===");
+			let prevSiblings = [];
+			current = targetItem.previousElementSibling;
+			while (current) {
+				prevSiblings.unshift(current.textContent);
+				current = current.previousElementSibling;
+			}
+			displayOutput(
+				"All previous siblings",
+				prevSiblings.length > 0 ? prevSiblings.join(", ") : "none",
+			);
+
+			// 11. Interactive - Click handler
+			myList.addEventListener("click", function (e) {
+				if (e.target.tagName === "LI") {
+					// Remove previous selection
+					document
+						.querySelectorAll("li")
+						.forEach((li) => li.classList.remove("selected"));
+
+					// Select clicked item
+					e.target.classList.add("selected");
+
+					// Show navigation info
+					output.innerHTML = "";
+					const clicked = e.target;
+					displayOutput("Selected Item", clicked.textContent);
+
+					const next = clicked.nextElementSibling;
+					displayOutput(
+						"Next Sibling",
+						next ? next.textContent : "none (last item)",
+					);
+
+					const prev = clicked.previousElementSibling;
+					displayOutput(
+						"Previous Sibling",
+						prev ? prev.textContent : "none (first item)",
+					);
+
+					const sibCount = Array.from(parent.children).filter(
+						(child) => child !== clicked,
+					).length;
+					displayOutput("Total Siblings (excluding self)", sibCount.toString());
+				}
+			});
+		</script>
+	</body>
+</html>
